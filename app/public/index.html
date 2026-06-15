@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UC Cockpit</title>
+  <link rel="stylesheet" href="/vendor/xterm/xterm.css">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>UC Cockpit</h1>
+      <p>Four-lane semi-automation console</p>
+    </div>
+    <div class="actions">
+      <input id="password" type="password" placeholder="UC password">
+      <button id="saveConfig">Save Lanes</button>
+      <button id="connectAll">Connect All</button>
+      <button id="disconnectAll">Disconnect</button>
+      <button id="clearAll">Clear Views</button>
+    </div>
+  </header>
+
+  <section class="commandbar">
+    <input id="command" autocomplete="off" spellcheck="false" placeholder="Type a UC menu command, then press Enter">
+    <button id="sendReady">Send Ready</button>
+    <button id="sendAll">Send All</button>
+    <span id="readySummary">0 ready</span>
+  </section>
+
+  <main id="lanes" class="lanes"></main>
+
+  <template id="laneTemplate">
+    <section class="lane">
+      <div class="lane-head">
+        <div>
+          <strong class="lane-name"></strong>
+          <span class="lane-state"></span>
+        </div>
+        <label class="ready-toggle"><input type="checkbox" class="lane-ready" checked> ready</label>
+      </div>
+      <div class="lane-config">
+        <input class="lane-host" placeholder="host">
+        <input class="lane-port" placeholder="port">
+        <input class="lane-login" placeholder="login">
+        <input class="lane-esp" placeholder="ESP URL">
+      </div>
+      <div class="terminal"></div>
+      <div class="lane-actions">
+        <button class="connect-one">Connect</button>
+        <button class="send-one">Send Here</button>
+        <button class="clear-one">Clear</button>
+        <button class="mode-off">OFF</button>
+        <button class="mode-m1">M1</button>
+        <button class="mode-m0">M0</button>
+      </div>
+    </section>
+  </template>
+
+  <script src="/vendor/xterm/xterm.js"></script>
+  <script src="/vendor/addon-fit/addon-fit.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+src/local_wifi_config.h
+node_modules/
+logs/
+.pio/
+.pio-core/
+build/
+managed_components/
+dependencies.lock
+sdkconfig
