@@ -96,6 +96,12 @@ function renderLane(lane) {
       port: node.querySelector(".lane-port"),
       login: node.querySelector(".lane-login"),
       esp: node.querySelector(".lane-esp"),
+      mapUplinkLabel: node.querySelector(".map-uplink-label"),
+      mapUplinkIp: node.querySelector(".map-uplink-ip"),
+      mapUcIp: node.querySelector(".map-uc-ip"),
+      mapValidators: node.querySelector(".map-validators"),
+      mapPeripheral: node.querySelector(".map-peripheral"),
+      mapCombord: node.querySelector(".map-combord"),
       terminalEl,
       terminal: xterm.terminal,
       fitAddon: xterm.fitAddon,
@@ -115,6 +121,8 @@ function renderLane(lane) {
     view.m0.addEventListener("click", () => setMode([lane.id], "m0"));
     view.check.addEventListener("click", () => checkEsp([lane.id]));
     view.terminal.onData((data) => sendRawInput(lane.id, data));
+    view.host.addEventListener("input", () => updateLaneMap(view, lane));
+    view.esp.addEventListener("input", () => updateLaneMap(view, lane));
     view.ready.addEventListener("change", updateReadySummary);
     laneViews.set(lane.id, view);
     lanesEl.appendChild(node);
@@ -133,6 +141,23 @@ function renderLane(lane) {
   view.m0.disabled = lane.kind !== "esp";
   view.m1.disabled = lane.kind !== "esp";
   view.check.disabled = lane.kind !== "esp";
+  updateLaneMap(view, lane);
+}
+
+function updateLaneMap(view, lane) {
+  const host = view.host.value || lane.host || "unknown";
+  const espUrl = view.esp.value || lane.espUrl || "";
+  if (lane.kind === "esp") {
+    view.mapUplinkLabel.textContent = "ESP proxy";
+    view.mapUplinkIp.textContent = espUrl.replace(/^https?:\/\//, "") || host;
+  } else {
+    view.mapUplinkLabel.textContent = "maintenance PC";
+    view.mapUplinkIp.textContent = host;
+  }
+  view.mapUcIp.textContent = lane.kind === "esp" ? "192.168.1.100" : host;
+  view.mapValidators.textContent = "scan";
+  view.mapPeripheral.textContent = "scan";
+  view.mapCombord.textContent = "scan";
 }
 
 function updateLanes(nextLanes) {

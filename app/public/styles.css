@@ -170,7 +170,7 @@ input {
 
 .lane {
   display: grid;
-  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  grid-template-rows: auto auto auto minmax(0, 1fr) auto;
   min-width: 0;
   border: 1px solid #343b38;
   border-radius: 8px;
@@ -190,6 +190,79 @@ input {
 
 .lane-head {
   justify-content: space-between;
+}
+
+.install-map {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 16px auto 18px auto;
+  gap: 0;
+  padding: 10px;
+  border-bottom: 1px solid #2c312f;
+  background: #151817;
+}
+
+.map-node {
+  border: 1px solid #3c4641;
+  background: #101312;
+  border-radius: 6px;
+  padding: 7px 9px;
+  min-width: 0;
+}
+
+.map-node strong {
+  display: block;
+  margin-top: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  color: #f1f6f3;
+}
+
+.map-label {
+  display: block;
+  color: #9eaaa4;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.map-uplink,
+.map-switch {
+  justify-self: center;
+  width: min(260px, 100%);
+  text-align: center;
+}
+
+.map-switch {
+  border-color: #58665f;
+  background: #1d2421;
+}
+
+.map-line {
+  background: #3c4641;
+  justify-self: center;
+}
+
+.map-line.vertical {
+  width: 1px;
+  height: 16px;
+}
+
+.map-line.horizontal {
+  width: min(560px, 88%);
+  height: 1px;
+  align-self: center;
+}
+
+.map-devices {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.map-device {
+  text-align: center;
 }
 
 .lane-state {
