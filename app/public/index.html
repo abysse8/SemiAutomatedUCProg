@@ -19,8 +19,42 @@
       <button id="connectAll">Connect All</button>
       <button id="disconnectAll">Disconnect</button>
       <button id="clearAll">Clear Views</button>
+      <button id="loadSim">Local Sim</button>
+      <a class="button-link" href="/api/audit" target="_blank">Audit</a>
     </div>
   </header>
+
+  <section class="networkbar">
+    <input id="scanCidr" autocomplete="off" spellcheck="false" value="192.168.11.0/24">
+    <button id="scanNetwork">Scan Network</button>
+    <button id="repeatScan">Repeat Off</button>
+    <button id="applyScan">Apply Found</button>
+    <span id="scanStatus">No network scan yet</span>
+  </section>
+
+  <section class="network-view">
+    <div class="section-title">
+      <strong>Network View</strong>
+      <span id="networkSummary">No hosts</span>
+    </div>
+    <div class="network-table-wrap">
+      <table class="network-table">
+        <thead>
+          <tr>
+            <th>IP</th>
+            <th>Equipment</th>
+            <th>MAC / Vendor</th>
+            <th>Services</th>
+            <th>ESP Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="networkRows">
+          <tr><td colspan="6">Run a scan to map the commutator.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
 
   <section class="commandbar">
     <input id="command" autocomplete="off" spellcheck="false" placeholder="Type a UC menu command, then press Enter">
@@ -54,6 +88,7 @@
         <button class="mode-off">OFF</button>
         <button class="mode-m1">M1</button>
         <button class="mode-m0">M0</button>
+        <button class="mode-check">Check</button>
       </div>
     </section>
   </template>

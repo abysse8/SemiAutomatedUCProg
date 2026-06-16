@@ -33,6 +33,17 @@ button:hover {
   background: #303733;
 }
 
+.button-link {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #59615d;
+  background: #242927;
+  color: #f2f5f3;
+  border-radius: 6px;
+  padding: 8px 11px;
+  text-decoration: none;
+}
+
 input {
   min-width: 0;
   border: 1px solid #4d5652;
@@ -43,7 +54,8 @@ input {
 }
 
 .topbar,
-.commandbar {
+.commandbar,
+.networkbar {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -79,6 +91,69 @@ input {
   font-size: 17px;
 }
 
+.networkbar input {
+  width: 210px;
+}
+
+#scanStatus {
+  color: #a9b3ae;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.network-view {
+  border-bottom: 1px solid #2c312f;
+  background: #141716;
+}
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 16px;
+  color: #dfe6e2;
+}
+
+.section-title span {
+  color: #a9b3ae;
+}
+
+.network-table-wrap {
+  max-height: 230px;
+  overflow: auto;
+}
+
+.network-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.network-table th,
+.network-table td {
+  border-top: 1px solid #2c312f;
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.network-table th {
+  position: sticky;
+  top: 0;
+  background: #1b1f1d;
+  color: #cdd5d1;
+}
+
+.network-table code {
+  font-family: Consolas, "Cascadia Mono", monospace;
+  color: #d6f5d6;
+}
+
+.network-table span {
+  color: #a9b3ae;
+}
+
 #readySummary {
   min-width: 78px;
   color: #a9b3ae;
@@ -88,7 +163,7 @@ input {
 .lanes {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-auto-rows: minmax(330px, calc((100vh - 142px) / 2));
+  grid-auto-rows: minmax(300px, 38vh);
   gap: 10px;
   padding: 10px;
 }
@@ -199,6 +274,7 @@ input {
 
   .topbar,
   .commandbar,
+  .networkbar,
   .actions {
     flex-wrap: wrap;
   }
